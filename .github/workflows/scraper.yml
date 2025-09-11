@@ -1,7 +1,7 @@
 name: Scrape Financial Data
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 1 * * *'  # Runs daily at 1 AM UTC
   workflow_dispatch:
 jobs:
   scrape:
@@ -16,5 +16,6 @@ jobs:
           playwright install chromium
           python backend/scraper.py
         env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
