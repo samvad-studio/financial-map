@@ -1,0 +1,8 @@
+fredapi
+playwright
+supabase
+python-dotenv
+requests
+beautifulsoup4
+lxml
+pandas

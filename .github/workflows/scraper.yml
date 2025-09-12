@@ -1,8 +1,9 @@
 name: Scrape Financial Data
 on:
   schedule:
-    - cron: '0 1 * * *'  # Runs daily at 1 AM UTC
+    - cron: '0 1 * * *'
   workflow_dispatch:
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -11,8 +12,9 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - run: |
-          pip install playwright supabase
+      - name: Install dependencies and run scraper
+        run: |
+          pip install -r requirements.txt
           playwright install chromium
           python backend/scraper.py
         env:
